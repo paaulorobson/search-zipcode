@@ -10,5 +10,5 @@ const onClick = () => {
 </script>
 
 <template>
-  <ButtonForm v-bind="props" @buttonClick="onClick" />
+  <ButtonForm v-bind="props" @buttonClick="onClick"><slot></slot></ButtonForm>
 </template>

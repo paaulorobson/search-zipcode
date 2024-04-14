@@ -9,8 +9,7 @@ export default defineConfig({
   plugins: [vue(), vuetify({ autoImport: true })],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      axios: require.resolve('axios')
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 })

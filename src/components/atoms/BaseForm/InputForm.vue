@@ -27,5 +27,6 @@ const emitValue = (val: string | number) => {
     @input="emitValue"
     variant="outlined"
     clearable
+    height="30"
   />
 </template>
