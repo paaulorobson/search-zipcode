@@ -6,7 +6,7 @@ import FormButton from '../molecules/FormButton.vue'
 import { useZipCode } from '@/composables/useZipCode'
 import FormLabel from '../molecules/FormLabel.vue'
 
-const { fetchZipCode } = useZipCode()
+const { fetchZipCode, snackbar } = useZipCode()
 
 const zipcode = ref<string>('')
 
@@ -31,8 +31,18 @@ const sendZipCode = async () => {
       width="100%"
       class="mb-4"
       color="indigo-darken-4"
+      :disabled="!zipcode"
       >Limpar
     </FormButton>
-    <FormButton @buttonClick="sendZipCode" width="100%" color="indigo-darken-4">Enviar </FormButton>
+    <FormButton @buttonClick="sendZipCode" width="100%" color="indigo-darken-4" :disabled="!zipcode"
+      >Enviar
+    </FormButton>
+
+    <v-snackbar v-model="snackbar" color="error">
+      CEP não encontrado. Verifique se o CEP está correto e tente novamente.
+      <template v-slot:actions>
+        <v-btn color="white" variant="text" @click="snackbar = false">Fechar</v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
