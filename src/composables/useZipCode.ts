@@ -4,9 +4,10 @@ import type AddressModel from '@/models/address.model'
 import { useAddressStore } from '@/stores/useAddess'
 
 export const useZipCode = () => {
-  const addressData = ref<AddressModel[]>([])
+  const addressData = ref<AddressModel>()
   const loading = ref(false)
   const error = ref<string | null>('')
+  const snackbar = ref<boolean>(false)
 
   const { addAddress } = useAddressStore()
 
@@ -16,12 +17,11 @@ export const useZipCode = () => {
     try {
       const response = await axios.get(`https://viacep.com.br/ws/${zipcode}/json/`)
       addressData.value = response.data
-      console.log('endereco', addressData.value)
       if (addressData.value) {
         addAddress(addressData.value)
       }
     } catch (error: any) {
-      error.value = error.message || 'Erro ao buscar CEP'
+      snackbar.value = true
     } finally {
       loading.value = false
     }
@@ -29,6 +29,7 @@ export const useZipCode = () => {
 
   return {
     addressData,
-    fetchZipCode
+    fetchZipCode,
+    snackbar
   }
 }
