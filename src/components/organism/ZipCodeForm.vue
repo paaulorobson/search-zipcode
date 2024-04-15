@@ -24,7 +24,7 @@ const sendZipCode = async () => {
   <div class="pa-6">
     <h3 class="font-weight-bold pb-4">Consultar CEP</h3>
     <FormLabel label="CEP" for="cep" />
-    <FormInput v-model="zipcode" placeholder="Digite um CEP..." id="cep" />
+    <FormInput v-model="zipcode" placeholder="Digite um CEP..." id="cep" v-cep-mask />
     <FormButton
       @buttonClick="clearInput"
       variant="outlined"
