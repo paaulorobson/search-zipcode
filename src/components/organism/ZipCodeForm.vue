@@ -43,7 +43,7 @@ watch(zipcode, () => {
 </script>
 
 <template>
-  <v-form class="pa-6" ref="formRef">
+  <v-form class="pa-6 text-left" ref="formRef">
     <h3 class="font-weight-bold pb-4">Consultar CEP</h3>
     <FormLabel label="CEP" for="cep" />
     <FormInput
@@ -53,6 +53,7 @@ watch(zipcode, () => {
       v-cep-mask
       :rules="cepRules"
       ref="cepField"
+      maxlength="9"
     />
     <FormButton
       @buttonClick="clearInput"
