@@ -14,6 +14,10 @@ const { loading } = useZipCode()
     <LoadingOverlay v-if="loading" />
     <v-row justify="center">
       <v-col cols="12" sm="6">
+        <div class="d-flex align-center justify-center ma-6">
+          <img src="@/assets/images/logo-jedis.png" width="auto" height="50px" />
+        </div>
+
         <div class="pa-2 ma-2 rounded-lg mx-auto content">
           <ZipCodeForm />
         </div>
