@@ -2,9 +2,9 @@
 import { ref, watch } from 'vue'
 import FormInput from '../molecules/FormInput.vue'
 import FormButton from '../molecules/FormButton.vue'
+import FormLabel from '../molecules/FormLabel.vue'
 
 import { useZipCode } from '@/composables/useZipCode'
-import FormLabel from '../molecules/FormLabel.vue'
 
 const { fetchZipCode, snackbar } = useZipCode()
 
@@ -32,9 +32,8 @@ const clearInput = () => {
   zipcode.value = ''
 }
 
-const sendZipCode = async () => {
-  await fetchZipCode(zipcode.value)
-  clearInput()
+const sendZipCode = () => {
+  fetchZipCode(zipcode.value).then(() => clearInput())
 }
 
 watch(zipcode, () => {

@@ -22,11 +22,7 @@ const { toggleModal, clearAddressesList } = useAddressStore()
           color="indigo-darken-4"
           >Cancelar
         </FormButton>
-        <FormButton
-          @buttonClick="clearAddressesList"
-          variant="default"
-          size="small"
-          color="indigo-darken-4"
+        <FormButton @buttonClick="clearAddressesList" size="small" color="indigo-darken-4"
           >Confirmar
         </FormButton>
       </template>

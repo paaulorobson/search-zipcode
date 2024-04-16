@@ -5,6 +5,7 @@ const props = defineProps<{
   color?: string
   disabled?: boolean
   variant?: 'text' | 'outlined' | 'flat' | 'elevated' | 'tonal' | 'plain' | undefined
+  size?: string
 }>()
 </script>
 
@@ -14,6 +15,7 @@ const props = defineProps<{
     :color="props.color"
     :variant="props.variant"
     :disabled="props.disabled"
+    :size="props.size"
     class="rounded-lg"
     ><slot></slot
   ></v-btn>
