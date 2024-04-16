@@ -1,4 +1,4 @@
-# Projeto Vite + Vue 3 com Vuetify 3, TypeScript e Pinia
+# Busca CEP - Buscador de Endereços
 
 Este é um projeto Vue 3 desenvolvido com Vite como bundler, Vuetify 3 para a interface de usuário, TypeScript para tipagem estática e Pinia para gerenciamento de estado.
 
