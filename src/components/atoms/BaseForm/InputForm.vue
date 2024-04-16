@@ -1,30 +1,23 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref } from 'vue'
+import { defineProps, defineModel } from 'vue'
 
 const props = defineProps<{
   label?: string
   placeholder?: string
-  value?: string | number
-  rules?: string[]
+  rules?: ((value: string) => true | string)[]
   inputId?: string
 }>()
 
-const emit = defineEmits(['update:value'])
-const modelValue = ref(props.value)
-const emitValue = (val: string | number) => {
-  modelValue.value = val
-  emit('update:value', val)
-}
+const value = defineModel()
 </script>
 
 <template>
   <v-text-field
-    v-model="modelValue"
-    :label="label"
-    :placeholder="placeholder"
-    :rules="rules"
-    :id="inputId"
-    @input="emitValue"
+    v-model="value"
+    :label="props.label"
+    :placeholder="props.placeholder"
+    :rules="props.rules"
+    :id="props.inputId"
     variant="outlined"
     clearable
     height="30"

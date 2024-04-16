@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import FormInput from '../molecules/FormInput.vue'
-import FormButton from '../molecules/FormButton.vue'
-import FormLabel from '../molecules/FormLabel.vue'
 
 import { useZipCode } from '@/composables/useZipCode'
+import InputForm from '../atoms/BaseForm/InputForm.vue'
+import LabelForm from '../atoms/BaseForm/LabelForm.vue'
+import ButtonForm from '../atoms/BaseForm/ButtonForm.vue'
 
 const { fetchZipCode, snackbar, loading } = useZipCode()
 
@@ -53,8 +53,8 @@ watch(zipcode, () => {
 <template>
   <v-form class="pa-6 text-left" @submit.prevent="sendZipCode" ref="form">
     <h3 class="font-weight-bold pb-4">Consultar CEP</h3>
-    <FormLabel label="CEP" for="cep" />
-    <FormInput
+    <LabelForm label="CEP" for="cep" />
+    <InputForm
       v-model="zipcode"
       placeholder="Digite um CEP..."
       id="cep"
@@ -63,7 +63,7 @@ watch(zipcode, () => {
       ref="cepField"
       maxlength="9"
     />
-    <FormButton
+    <ButtonForm
       @buttonClick="clearInput"
       variant="outlined"
       width="100%"
@@ -71,15 +71,15 @@ watch(zipcode, () => {
       color="indigo-darken-4"
       :disabled="!zipcode"
       >Limpar
-    </FormButton>
-    <FormButton
+    </ButtonForm>
+    <ButtonForm
       type="submit"
       width="100%"
       color="indigo-darken-4"
       :disabled="zipcodeError"
       :loading="loading"
       >Enviar
-    </FormButton>
+    </ButtonForm>
 
     <v-snackbar v-model="snackbar" color="error">
       CEP não encontrado. Verifique se o CEP está correto e tente novamente.

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FormButton from '../molecules/FormButton.vue'
 import { useAddressStore } from '@/stores/useAddess'
+import ButtonForm from '../atoms/BaseForm/ButtonForm.vue'
 
 const { addresses, removeAddress, toggleModal } = useAddressStore()
 </script>
@@ -54,14 +54,14 @@ const { addresses, removeAddress, toggleModal } = useAddressStore()
 
     <v-row justify="center">
       <v-col cols="auto">
-        <FormButton
+        <ButtonForm
           @buttonClick="toggleModal"
           variant="outlined"
           class="mb-4 text-center w-auto"
           color="indigo-darken-4"
           :disabled="!addresses.length"
           >Limpar
-        </FormButton>
+        </ButtonForm>
       </v-col>
     </v-row>
   </div>

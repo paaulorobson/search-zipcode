@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseModal from '../atoms/BaseModal/BaseModal.vue'
-import FormButton from '../molecules/FormButton.vue'
+import ButtonForm from '../atoms/BaseForm/ButtonForm.vue'
 import { useAddressStore } from '@/stores/useAddess'
 
 const { toggleModal, clearAddressesList } = useAddressStore()
@@ -15,16 +15,16 @@ const { toggleModal, clearAddressesList } = useAddressStore()
         <p>Ao clicar em Confirmar todos os items da lista serão excluidos!</p>
       </template>
       <template #actions>
-        <FormButton
+        <ButtonForm
           @buttonClick="toggleModal"
           variant="outlined"
           size="small"
           color="indigo-darken-4"
           >Cancelar
-        </FormButton>
-        <FormButton @buttonClick="clearAddressesList" size="small" color="indigo-darken-4"
+        </ButtonForm>
+        <ButtonForm @buttonClick="clearAddressesList" size="small" color="indigo-darken-4"
           >Confirmar
-        </FormButton>
+        </ButtonForm>
       </template>
     </BaseModal>
   </div>
