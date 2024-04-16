@@ -1,4 +1,4 @@
-# Busca CEP - Buscador de Endereços
+# Consulta CEP - Buscador de Endereços
 
 Este é um projeto Vue 3 desenvolvido com Vite como bundler, Vuetify 3 para a interface de usuário, TypeScript para tipagem estática e Pinia para gerenciamento de estado.
 
