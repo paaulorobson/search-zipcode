@@ -6,7 +6,7 @@ import FormLabel from '../molecules/FormLabel.vue'
 
 import { useZipCode } from '@/composables/useZipCode'
 
-const { fetchZipCode, snackbar } = useZipCode()
+const { fetchZipCode, snackbar, loading } = useZipCode()
 
 const zipcode = ref('')
 const zipcodeError = ref(true)
@@ -68,6 +68,7 @@ watch(zipcode, () => {
       width="100%"
       color="indigo-darken-4"
       :disabled="zipcodeError"
+      :loading="loading"
       >Enviar
     </FormButton>
 

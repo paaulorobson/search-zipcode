@@ -6,6 +6,7 @@ const props = defineProps<{
   disabled?: boolean
   variant?: 'text' | 'outlined' | 'flat' | 'elevated' | 'tonal' | 'plain' | undefined
   size?: string
+  loading?: boolean
 }>()
 </script>
 
@@ -17,6 +18,7 @@ const props = defineProps<{
     :disabled="props.disabled"
     :size="props.size"
     class="rounded-lg"
+    :loading="loading"
     ><slot></slot
   ></v-btn>
 </template>
