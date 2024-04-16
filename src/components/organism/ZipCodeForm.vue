@@ -10,6 +10,7 @@ const { fetchZipCode, snackbar, loading } = useZipCode()
 
 const zipcode = ref('')
 const zipcodeError = ref(true)
+const form = ref<HTMLFormElement | null>(null)
 
 const cepRules = [
   (value: string) => !!value || 'Campo obrigatório',
@@ -33,7 +34,15 @@ const clearInput = () => {
 }
 
 const sendZipCode = () => {
-  fetchZipCode(zipcode.value).then(() => clearInput())
+  fetchZipCode(zipcode.value).then(() => {
+    clearInput(), reset()
+  })
+}
+
+const reset = () => {
+  if (form.value) {
+    form.value.resetValidation()
+  }
 }
 
 watch(zipcode, () => {
@@ -42,7 +51,7 @@ watch(zipcode, () => {
 </script>
 
 <template>
-  <v-form class="pa-6 text-left" ref="formRef">
+  <v-form class="pa-6 text-left" @submit.prevent="sendZipCode" ref="form">
     <h3 class="font-weight-bold pb-4">Consultar CEP</h3>
     <FormLabel label="CEP" for="cep" />
     <FormInput
@@ -64,7 +73,7 @@ watch(zipcode, () => {
       >Limpar
     </FormButton>
     <FormButton
-      @buttonClick="sendZipCode"
+      type="submit"
       width="100%"
       color="indigo-darken-4"
       :disabled="zipcodeError"

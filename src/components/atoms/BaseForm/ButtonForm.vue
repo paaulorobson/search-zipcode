@@ -2,6 +2,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps<{
+  type?: string
   color?: string
   disabled?: boolean
   variant?: 'text' | 'outlined' | 'flat' | 'elevated' | 'tonal' | 'plain' | undefined
@@ -12,6 +13,7 @@ const props = defineProps<{
 
 <template>
   <v-btn
+    :type="type"
     @click="$emit('buttonClick')"
     :color="props.color"
     :variant="props.variant"
