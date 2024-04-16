@@ -7,9 +7,11 @@ Este é um projeto Vue 3 desenvolvido com Vite como bundler, Vuetify 3 para a in
 Neste projeto, foi desenvolvido uma aplicação de Busca CEP usando uma Api Externa. A aplicação exibe uma lista de itens provenientes da API.
 
 Desktop:
+
 ![Logo do Meu Projeto](https://github.com/paaulorobson/search-zipcode/blob/main/src/assets/images/desktop.png)
 
 Mobile:
+
 ![Logo do Meu Projeto](https://github.com/paaulorobson/search-zipcode/blob/main/src/assets/images/mobile.png)
 
 
