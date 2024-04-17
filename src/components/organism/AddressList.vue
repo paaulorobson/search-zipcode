@@ -1,8 +1,19 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import { useAddressStore } from '@/stores/useAddess'
 import ButtonForm from '../atoms/BaseForm/ButtonForm.vue'
+import BasePagination from '../atoms/Pagination/BasePagination.vue'
 
 const { addresses, removeAddress, toggleModal } = useAddressStore()
+
+const page = ref(1)
+const itemsPerPage = 3
+
+const paginatedResults = computed(() => {
+  const start = (page.value - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  return addresses.slice(start, end)
+})
 </script>
 
 <template>
@@ -21,7 +32,7 @@ const { addresses, removeAddress, toggleModal } = useAddressStore()
       </thead>
 
       <tbody>
-        <tr v-for="(address, index) in addresses" :key="index">
+        <tr v-for="(address, index) in paginatedResults" :key="index">
           <td>
             <p>{{ address.cep }}</p>
           </td>
@@ -51,6 +62,14 @@ const { addresses, removeAddress, toggleModal } = useAddressStore()
       <p class="pa-md-4 text-center">Nenhum resultado encontrado</p>
     </template>
     <hr class="mb-4 custom-color" />
+
+    <BasePagination
+      v-if="addresses.length > 3"
+      class="mb-4"
+      v-model="page"
+      :length="Math.ceil(addresses.length / itemsPerPage)"
+      rounded="circle"
+    />
 
     <v-row justify="center">
       <v-col cols="auto">
